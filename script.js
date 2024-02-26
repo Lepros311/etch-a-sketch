@@ -1,6 +1,8 @@
 const btn = document.querySelector('.btn');
 const cdiv = document.querySelector('.container');
 let numberPerRow = null;
+const btnClear = document.querySelector('.btn-clear');
+const divs = cdiv.querySelectorAll('div');
 
 function getNumberPerRow() {
     while (true) {
@@ -18,7 +20,7 @@ function clearBoxes() {
     cdiv.innerHTML = null;
 }
 
-function createBoxes() {
+function createBoxes(divs) {
     numberPerRow = getNumberPerRow();
     
     const total = (numberPerRow * numberPerRow) + numberPerRow;
@@ -36,7 +38,7 @@ function createBoxes() {
   
       cdiv.appendChild(div);
     };
-    const divs = cdiv.querySelectorAll('div');
+    divs = cdiv.querySelectorAll('div');
     divs.forEach(function(div) {
         div.addEventListener('mouseover', function(e) {
             div.classList.toggle('color');
@@ -46,8 +48,16 @@ function createBoxes() {
 
 btn.addEventListener('click', () => {
     clearBoxes();
-    createBoxes();
-})
+    createBoxes(divs);
+});
 
-createBoxes();
+function clearColor(divs) {
+    divs = cdiv.querySelectorAll('div');
+    divs.forEach(function(div) {
+          div.classList.remove('color');
+    });
+};
 
+btnClear.addEventListener('click', () => {
+    clearColor(divs);
+});

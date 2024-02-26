@@ -4,17 +4,33 @@
     padding: 0;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .container {
     display: flex;
     flex-wrap: wrap;
+    width: 700px;
+    height: auto;
 }
 
 .color {
     background-color: red;
 }
 
-.btn {
+.btn, .btn-clear {
+    border: solid 2px green;
+    border-radius: 5px;
+    margin-top: 10px;
     margin-bottom: 10px;
-    padding: 5px 10px;
+    padding: 5px 20px;
     font-size: 14px;
+}
+
+.btn-clear {
+    border: solid 2px blue;
 }
